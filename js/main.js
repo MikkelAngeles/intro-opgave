@@ -22,27 +22,35 @@ hamburger.addEventListener('click', toggleClass);
 
 function getFormData(){
 
-    let name = document.getElementById('name').value;
-    let email = document.getElementById('email').value;
-    let besked = document.getElementById('besked').value;
+    document.getElementById('nameSpan').classList.remove("show")
+    document.getElementById('emailSpan').classList.remove('show');
+    document.getElementById('beskedSpan').classList.remove('show');
 
-    if (name === ''){
+    let name = document.getElementById('name');
+    let email = document.getElementById('email');
+    let besked = document.getElementById('besked');
+
+    if (!name.value) {
         document.getElementById('nameSpan').classList.add('show');
     }
 
-    if (email === ''){
+    if (!email.value) {
         document.getElementById('emailSpan').classList.add('show');
     }
 
-    if (besked === ''){
+    if (!besked.value) {
         document.getElementById('beskedSpan').classList.add('show');
     }
 
     else{
-        alert('Hej ' + name + ' tak for din besked, hvor du skrev: ' + besked +
-        '. Vi vender tilbage til dig på din email ' + email + ' snarest muligt.');
+        alert('Hej ' + name.value + ' tak for din besked, hvor du skrev: ' + besked.value +
+        '. Vi vender tilbage til dig på din email ' + email.value + ' snarest muligt.');
+       // location.reload(); //Ghettoløsningen!
 
-        location.reload();
+        name.value = "";
+        email.value = "";
+        besked.value = "";
+
         return false;
     }
 
